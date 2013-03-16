@@ -1,0 +1,39 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{fullpage}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage[margin=3cm]{geometry}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{CS 157}
+\newcommand\semester{Spring 2013}  % <-- current semester
+\newcommand\asgnname{Study Guide}         % <-- assignment name
+\newcommand\yourname{Charles Harrison}  % <-- your name
+\newcommand\login{csharris}          % <-- your CS login
+
+\newcommand{\answer}[2]{
+  \subsubsection*{#1}
+  \input{#2.tex}
+  \newpage
+}
+
+\newcommand{\B}{\textbf}
+\newcommand{\I}{\emph}
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\yourname\ (\login)\\\course\ --- \semester}
+\chead{\textbf{\Large Homework \asgnname}}
+\rhead{\today}
+\headsep 10pt
+
+\begin{document}
+
+\answer{Modular Arithmetic}{mod}
+
+\end{document}
+
