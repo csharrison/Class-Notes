@@ -1,0 +1,69 @@
+\subs{Basic Mathematical Models; Direction Fields}
+\begin{itemize}
+
+\f
+A \B{mathematical model} is a differential equation that describes some physical process. E.g.
+\begin{align*}
+	F &= ma = m\frac{dv}{dt}\\
+	F &= mg - \gamma v \text{ where $\gamma = $ drag coefficient}\\
+	\intertext{so putting the two equations together...}
+	m\frac{dv}{dt} &= mg - \gamma v
+\end{align*}
+
+Constructing mathematical models involves recognizing and solving a few steps:
+\begin{enumerate}
+\f Identify independent and dependent variables. Keep in mind time is usually independent.
+\f Choose units of measurement
+\f Find a basic principal that governs the problem. For example: the rate of change of temperature of a glass of water is proportional to the difference between its temp and the environment's.
+\f Express part 3 in terms of the variables in part 1. Make sure units match up. This can sometimes be a system of equations.
+\end{enumerate}
+
+\f \B{Direction fields} are formed by evaluating $\frac{dy}{dt} = f(t,y)$ at points in the $y-t$ plane. At each coordinate, a line segment is drawn with the slope of $f(t,y)$. 
+\end{itemize}
+
+\subs{Solutions of Some Differential Equations}
+\begin{itemize}
+\f The \B{initial value problem} is the solution of the differential equation, together with an initial condition
+\f An example of a simple initial value problem
+\begin{align*}
+	\frac{dy}{dt} &= ay - b \text{ with } y(0) = y_0\\
+	\frac{dy}{ay - b} &= dt\\
+	\int \! \frac{dy}{ay - b} &= \int \! dt\\
+	\frac{\log{ay-b}}{a} &= t\\
+	e^{\log{ay-b}} &= e^{at}\\
+	y &= \frac{b + e^{at}}{a}\\
+	y &= \frac{b}{a} + Ce^{at}\\
+	\intertext{plug in for the initial condition}
+	y(0) = y_0 &= \frac{b}{a} + Ce^{0}\\
+	y_0 &= \frac{b}{a} + C\\
+	C &= y_0 - \frac{b}{a}\\
+	\intertext{so our final equation looks like...}
+	y &= \frac{b}{a} + (y_0 - \frac{b}{a})e^{at}\\
+\end{align*}
+\end{itemize}
+
+\subs{Classification of Differential Equations}
+\begin{itemize}
+\f \B{Ordinary and Partial Differential Equations}
+	\begin{itemize}
+	\f Ordinary differential equations depend only on a single independent variable, and only \emph{ordinary derivatives} appear in the differential equation.
+	\f Partial differential equations depend on multiple independent variables. Therefore \emph{partial derivatives} appear in them.
+	\end{itemize}
+\f \B{Systems of Differential Equations}. 
+	This one is easy. If there are multiple unknown functions involved, you are dealing with a system of DEs. An example is the Lotka-Volterra (predator-prey) equations.
+\f \B{Order of the Differential Equation}. The order of a differential equation is the order of the highest derivative that appears in the equation. Thus
+$F(t, y(t), y'(t), y''(t), \ldots , y^n(t)) $
+is order $n$. We look at functions like these in the form 
+	\begin{equation} y^n = f(t, y, y', \ldots, y^{n-1})
+	\end{equation}
+\f \B{Linear and Nonlinear Equations}. 
+	\begin{itemize}
+	\f Linear equations are of the form: 
+		$$ F(t, y, y', y'',\ldots , y^n) = 0$$
+		The equation is a linear combination of all the derivatives up to $n$. Any $y$ term can be multiplied by any function of $t$ still, however. 
+	\f Nonlinear equations, on the other hand, do not satisfy this constraint. Any equation with a product $yy'$, $y^2$ or a term like $\sin (y)$ are all nonlinear. 
+	\end{itemize}
+\end{itemize}
+
+\subs{Historical Remarks}
+Newton is great. Leibniz is also cool. Euler beats them both. The Bernoulli brothers loved their integrals, and a lot of fun was had by all.

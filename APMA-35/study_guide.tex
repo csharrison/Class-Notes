@@ -1,0 +1,38 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{fullpage}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage[margin=3cm]{geometry}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{APMA 35}
+\newcommand\semester{Spring 2013}  % <-- current semester
+\newcommand\yourname{Charles Harrison}  % <-- your name
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\yourname \\\course\ --- \semester}
+\chead{\textbf{\Large Study Guide }}
+\rhead{\today}
+\headsep 10pt
+
+\newcommand{\chapter}[2]{
+  \section{#2}
+  \input{ch#1.tex}
+  \newpage
+}
+
+\newcommand{\subs}[1]{\subsection{#1}}
+\newcommand{\B}{\textbf}
+\newcommand{\f}{\item}
+\begin{document}
+
+\chapter{1}{Introduction}
+\chapter{2}{First Order Differential Equations}
+
+\end{document}

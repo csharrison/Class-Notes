@@ -1,0 +1,154 @@
+This chapter deals with differential equations of the first order:
+\begin{equation}
+\frac{dy}{dt} = f(t,y)
+\end{equation}
+Any differentiable function $y = \phi(t)$ that satisfies this equation for all $t$ in some interval is called a solution.
+
+\subs{Linear Equations; Method of Integrating Factors}
+The \B{first order linear equation} can be written in the form:
+\begin{equation}
+\frac{dy}{dt} + p(t)y = g(t)
+\end{equation}
+The method in part 1 cannot solve this generally unless $p(t)$ and $g(t)$ are constants. We need a new method.
+\begin{itemize}
+\f Find an integrating factor $\mu$, and multiply it on both sides: 
+	$$\mu(t)\frac{dy}{dt} + \mu(t)p(t)y = \mu(t)g(t)$$
+	
+\f We now choose $\mu$ such that the left hand side is the derivative of some expression. Recall the product rule:
+	$$\frac{d}{dt}\left[\mu(t)y\right] = \mu(t)\frac{dy}{dt} + \frac{d\mu(t)}{dt}y$$
+\f Now we can just pick a $\mu(t)$ such that 
+	\begin{align*} 
+		\frac{d\mu(t)}{dt} &= \mu(t)p(t)\\
+		\frac{d\mu(t)}{\mu(t)} &= p(t)dt\\
+		\int \! \frac{d\mu(t)}{\mu(t)} &= \int \! p(t)dt\\
+		\log{\mu(t)} &= \int \! p(t)dt\\
+		\mu(t) &= e^{\int \! p(t)dt}
+	\end{align*}
+
+\f Now our equation looks something like this:
+$$(\mu(t)y)' = \mu(t)g(t) \rightarrow (e^{\int \! p(t)dt)}y)' = e^{\int \! pt(1)dt}g(t) $$
+\f Solving the equation yields 
+$$y = \frac{\int \! \mu(t)g(t)dt + C}{\mu(t)}$$
+\end{itemize}
+
+\subs{Separable Equations}
+Recall the general first order equation (2) is 
+$$ \frac{dy}{dx} = f(x,y)$$
+Note: this is not necessarily linear, and there is no universal method for solving this class of equations. We will consider a subclass of equations in this set. These equations are of the form
+\begin{equation}
+	M(x,y) + N(x,y)\frac{dy}{dx} = 0
+\end{equation}
+Note that we are simply rewriting equation (2). It is \emph{always} possible to do this, simply by setting $M(x,y) = -f(x,y)$ and $N(x,y) = 1$. \\
+An equation is \B{separable} if $M$ is a function of $x$ only, and $N$ is a function of $y$ only. Thus,
+$$M(x) + N(y)\frac{dy}{dx} = 0$$
+\begin{equation}
+M(x)dx + N(y)dy = 0
+\end{equation}
+This can be solved by integrating $M$ and $N$ to find an implicit solution.
+$$
+\int \! M(x)dx + \int \! N(y)dy = 0
+$$
+\B{Homogeneous Equations}. If the right side of $\frac{dy}{dx} = f(x,y)$ can be expressed as a ratio of $\frac{y}{x}$ only, the equation is said to be homogeneous. These can always be solved with a change of dependent variable.
+\begin{align*}
+\frac{dy}{dx} &= \frac{y - 4x}{x - y}\\
+	&= \frac{y - 4x}{x-y} \frac{1/x}{1/x}\\
+	&= \frac{y/x - 4} {1 - y/x}
+	\intertext{let $v = \frac{y}{x}$ so $y = xv(x)$}
+	\frac{dy}{dx} &= x\frac{dv}{dx} + v\\
+	\frac{v -4}{1 - v} &= x\frac{dv}{dx} + v\\
+	x\frac{dv}{dx} &= \frac{v^2 - 4}{1 - v}
+\end{align*}
+which is now separable!
+
+\subs{Modeling with First Order Equations}
+\begin{itemize}
+\f Mixing Problems. These problems involve mixing quantities (salt, toxin, etc) into water at a certain rate, and water leaving the system at a certain rate. We usually want to find the amount of salt in the tank at time $t$. 
+$$ \frac{dQ}{dt} = \text{rate in} - \text{rate out}$$
+Where the rate out = $\frac{rQ}{volume}$. Usually, volume will remain constant.
+\f Compound interest. Let the value of an investment = $S$ and the interest rate = $r$.
+$$\frac{dS}{dt} = rS$$
+
+\f Escape velocity. This is a more complex example and is on page 58.
+\end{itemize}
+
+\subs{Differences Between Linear and Nonlinear Equations}
+\B{The Existence and Uniqueness Theorems}\\
+Theorem 2.4.1\\
+If the functions $p$ and $g$ are continuous on an open interval $I:\alpha < t < \beta$ containing the point $t = t_0$, then there exists a unique function $y = \phi(t)$ that satisfies the differential equation 
+$$y' + p(t)y = g(t)$$
+for each $t$ in $I$, and that also satisfies the initial condition
+$$y(t_0) = y_0$$
+where $y_0$ is an arbitrary prescribed initial value.
+\B{WARNING}. This only holds for \B{linear, first order} equations!\\\\
+Theorem 2.4.2\\
+Let the functions $f$ and $\frac{\partial f}{\partial y}$ be continuous in some rectangle $\alpha < t < \beta$, $\gamma < y < \delta$ containing the point $(t_0, y_0)$. Then, in some interval $t_0 - h < t < t_0 + h$ contained in $\alpha < t < \beta$, there is a unique solution $y = \phi(t)$ of the initial value problem
+$$y' = f(t,y) \text{ and } y(t_0) = y_0$$
+
+\subs{Autonomous Equations and Population Dynamics}
+An \B{autonomous} function is a first order differential equation in which the independent variable does not appear explicitly.
+\begin{equation}
+\frac{dy}{dx} = f(y)
+\end{equation}
+
+\begin{itemize}
+\f Exponential Growth. A simple hypothesis about population growth: The rate of change of $y$ is proportional to the current value of $y$. $$\frac{dy}{dt} = ry$$
+Here $r = $ the \B{rate of growth or decline}. Solving for the initial value $y(0) = y_0$, we get 
+$$ y = y_0e^{rt}$$
+\f Logistic Growth. The exponential model is too ideal. The logistic equation takes into account that the growth \emph{rate} depends on $y$. 
+$$ \frac{dy}{dt} = (r - ay)y$$
+or, in the equivalent form:
+$$ \frac{dy}{dt} = r\left(1 - \frac{y}{K}\right)y$$
+where $K = \frac{r}{a}$. $r$ is called the \B{intrinsic growth rate}, and $K$ is the \B{carrying capacity}.
+\end{itemize}
+
+\B{Equilibrium Solutions}. An equilibrium solution is one such that $\frac{dy}{dt} = 0$. E.g. in the logistic equation
+\begin{align*}
+	\frac{dy}{dx} &= r\left(1 - \frac{y}{K}\right)y = 0\\
+		(1 - \frac{y}{K})y &= 0
+\end{align*}
+So when $y = 0,K$, our solution is at equilibrium. The equilibrium solutions of a general equation can be found by locating the roots of $f(y) = 0$. These are also called \B{critical points}.
+
+\B{Stability}
+\begin{itemize}
+\f Asymptotically stable solution. If the $y$ tends toward the solution regardless of whether it is initially above or below it.
+\f Unstable solution. The only way this can be a solution is if the initial condition is exactly this.
+\f Semistable solution. If solutions on one side tend to approach it, and depart from it on the other side.
+\end{itemize}
+
+\subs{Exact Equations and Integrating Factors}
+Suppose we have a differential equation of the form (4)
+$$M(x,y) + N(x,y)y' = 0$$
+Further suppose we can find a function $\psi$ such that 
+$$\frac{\partial \psi}{\partial x}(x,y) = M(x,y)$$
+$$\frac{\partial \psi}{\partial y}(x,y) = N(x,y)$$
+$$\psi(x,y) = c$$
+
+The differential equation is said to be \B{exact} if $M_y = N_x$. And if the equation is exact, then:
+$$\psi_x(x,y) = M(x,y) \text{ and } \psi_y(x,y) = N(x,y)$$
+Therefore, we integrate, holding y constant
+\begin{align*}
+\psi(x,y) &= \int \! M(x,y)dx = Q(x,y) + h(y)\\
+\intertext{now, by differentiating this in terms of $y$ we can find $h$}
+\psi_y(x,y) &= \frac{\partial Q}{\partial y}(x,y) + h'(y) = N(x,y)\\
+h'(y) &= N(x,y) - \frac{\partial Q}{\partial y}(x,y)
+\end{align*}
+
+\B{Integrating Factors}. Sometimes you can convert an inexact equation into an exact equation by multiplying the equation by a suitable integrating factor (recall 2.1). Let $\mu$ be such a factor. Our goal is to make the equation
+$$ \mu(x,y)M(x,y)dx + \mu(x,y)N(x,y)dy = 0$$
+exact. It will only be exact if 
+\begin{align*}
+(\mu M)_y &= (\mu N)_x\\
+\mu_yM + M_y\mu &= (\mu_xN + N_x\mu)\\
+M\mu_y - N\mu_x + (M_y - N_x)\mu &= 0 
+\end{align*}
+
+\subs{Numerical Approximations: Euler's Method}
+Euler's method involves
+\begin{itemize}
+\f Carrying out the linking of tangent lines in a systematic manner
+\f The resulting linear function approximates the actual solution
+\end{itemize}
+
+the line tangent to the curve at $(t_0, y_0)$ is 
+$$y = y_0 + f(t_0,y_0)(t - t_0)
+$$
