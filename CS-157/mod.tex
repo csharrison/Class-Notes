@@ -6,3 +6,40 @@ $$x \mod{n} = r$$
 
 Two numbers are said to be \I{conguent modulo $n$} if they differ by a multiple of $n$, that is
 $$ x \equiv y \mod{n} \iff n \text{ divides } (x - y)$$ 
+
+This definition defines a set of $n$ \I{equivalence classes}, where each class has the form $i + kn$ for $k \in \mathbb{Z}$.
+For example, there are three equivalence classes modulo 3: \\\\
+	 $\ldots$ -9 -6 -3 0 3 6 9 $\ldots$\\
+	$\ldots$ -8 -5 -2 1 4 7 10 $\ldots$\\
+	$\ldots$ -7 -4 -1 2 5 8 11 $\ldots$\\\\
+Where two elements in any one class are equivalent modulo 3.\\
+
+\B{Substitution Rule:} if $x \equiv x' \mod{n}$ and $y \equiv y' \mod{n}$, then
+$$ x + y \equiv x' + y' \mod{n} \text{ and } xy \equiv x'y' \mod{n}$$
+\\
+\B{Identities:}
+\begin{itemize}
+	\item Associativity: $x + (y + z) \equiv (x + y) + z \mod{n}$
+	\item Communitivity: $xy \equiv yx \mod{n}$
+	\item Distributivity: $x(y + z) \equiv xy + xz \mod{n}$
+\end{itemize}
+
+\B{Modular exponentiation} is a technique for taking large exponents $x^y \mod{n}$ quickly. It involves doing intermediate computations modulo $n$.
+\begin{itemize}
+	\item Naive solution: Perform the operation in $y$ steps by taking
+		$$ first = x \mod {n}$$
+		$$ first * (x \mod {n}) = x^2 \mod{n}$$
+		etc. This method involves taking $O(y)$ multiplications, and if $y$ is $z$ bits long, we take $O(2^z)$ multiplications. This is pretty bad.
+	\item Better solution using divide and conquer. Start with $x$ and square repeatedly modulo $n$
+		$$ x = x \mod{n}$$
+		$$ x^2 = x*x \mod{n}$$
+		$$ x^4 = x^2*x^2 \mod{n}$$
+		etc. We require $\log_2{y}$ multiplications to generate $x^y \mod{n}$. See \texttt{modular\_exp.py} for an implementation.
+\end{itemize}
+
+\B{Modular division}
+In arithmetic in $\mathbb{R}$, every number $a \ne 0$ has an inverse, $\frac{1}{a}$, and $\frac{n}{a} = na^{-1}$. We can do a similar thing with modular arithmetic.\\\\
+
+$x$ is the multiplicative inverse of $a$ modulo $n$ if $ax \equiv 1 \mod{n}$, denoted $a^{-1}$. 
+
+\B{Modular division theorem:} For any $a \mod{n}$, $a$ has a multiplicitive inverse modulo $n$ $\iff$ it is relatively prime to $n$. When this inverse exists, it can be found in $O(n^3)$ time by running the extended Euclid's algorithm.
